@@ -17,7 +17,7 @@ main() {
   ensure_bash_shell
   configure_git
   install_mise
-  run_as_user bash -lc 'mise --version'
+  run_as_user bash -lc 'export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$PATH"; mise --version'
   log "done"
 }
 
