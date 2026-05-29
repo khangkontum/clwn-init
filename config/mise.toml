@@ -1,0 +1,13 @@
+# Global mise tools installed into each new clwn VM.
+# Edit this file to change the default runtime/developer toolset.
+
+[tools]
+node = "lts"
+pnpm = "latest"
+python = "latest"
+uv = "latest"
+go = "latest"
+
+[tools."http:zmx"]
+version = "0.6.0"
+url = 'https://zmx.sh/a/zmx-{{version}}-{{os()}}-{{arch(x64="x86_64", arm64="aarch64")}}.tar.gz'
