@@ -9,6 +9,8 @@ Current setup:
 
 - requires/re-execs with `bash`
 - changes the VM user login shell to `/bin/bash` when possible
+- configures global Git identity as `Hoang-Khang Nguyen <git@nhkhang.com>`
+- installs a global `commit-msg` hook that strips `Co-Authored-by` trailers from commit messages
 - installs `mise` for the VM user with the official installer
 - writes `config/mise.toml` to `~/.config/mise/config.toml`
 - installs the configured tools, currently Node.js LTS, pnpm, Python, uv, Go, Rust, and zmx
@@ -22,6 +24,8 @@ Layout:
 - `config/mise.toml` is the global VM mise toolset.
 - `lib/common.sh` contains logging, user detection, and managed-block helpers.
 - `lib/shell.sh` contains shell/profile setup.
+- `lib/git.sh` contains Git identity and hook setup.
+- `lib/git-hooks/commit-msg` removes agent-added `Co-Authored-by` trailers.
 - `lib/mise.sh` contains mise installation, global config sync, and tool install.
 
 ## Install as the clwn default setup script
