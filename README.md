@@ -15,7 +15,7 @@ Current setup:
 - writes `config/mise.toml` to `~/.config/mise/config.toml`
 - installs the configured tools, currently Node.js LTS, pnpm, Python, uv, Go, Rust, and zmx
 - runs `mise install -y` so the configured tools are available immediately
-- adds a managed bash startup block for `mise activate bash`
+- adds a managed bash startup block for mise activation and a `ZMX_SESSION` prompt prefix
 
 Layout:
 

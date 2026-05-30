@@ -20,8 +20,14 @@ install_mise() {
 install_mise_shell_block() {
   shell_block='export SHELL=/bin/bash
 export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$HOME/.cargo/bin:$PATH"
-if command -v mise >/dev/null 2>&1; then
+mise_bin="$HOME/.local/bin/mise"
+if [ -x "$mise_bin" ]; then
+  eval "$("$mise_bin" activate bash)"
+elif command -v mise >/dev/null 2>&1; then
   eval "$(mise activate bash)"
+fi
+if [[ -n $ZMX_SESSION ]]; then
+  export PS1="[$ZMX_SESSION] ${PS1}"
 fi'
 
   replace_managed_block "$home_dir/.bashrc" "$shell_block"
