@@ -1,0 +1,4 @@
+[tasks.deploy-bootstrap]
+description = "Deploy clwn-init bootstrap as the default clwn VM setup script"
+sources = ["bootstrap.sh", "scripts/deploy-bootstrap.sh"]
+run = "scripts/deploy-bootstrap.sh"

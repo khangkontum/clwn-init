@@ -8,6 +8,7 @@ python = "latest"
 uv = "latest"
 go = "latest"
 rust = "stable"
+"npm:droid" = "latest"
 
 [tools."http:zmx"]
 version = "0.6.0"
