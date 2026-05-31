@@ -22,6 +22,7 @@ configure_droid() {
   esac
 
   install_droid_settings
+  install_droid_shell_env
   install_droid_env
   register_droid_computer
   install_droid_service
@@ -79,6 +80,18 @@ install_droid_settings() {
 EOF
   chmod 0600 "$settings_file"
   chown_user_files "$settings_dir" "$settings_file"
+}
+
+install_droid_shell_env() {
+  env_file="$home_dir/.factory/droid-env.sh"
+  log "installing Droid shell env to $env_file"
+  mkdir -p "$(dirname "$env_file")"
+  {
+    printf 'export %s=' "$droid_byok_env_name"
+    printf '%q\n' "${CLWN_INIT_DROID_BYOK_API_KEY:-$droid_byok_placeholder}"
+  } >"$env_file"
+  chmod 0600 "$env_file"
+  chown_user_files "$env_file"
 }
 
 install_droid_env() {

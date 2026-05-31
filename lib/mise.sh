@@ -26,6 +26,9 @@ if [ -x "$mise_bin" ]; then
 elif command -v mise >/dev/null 2>&1; then
   eval "$(mise activate bash)"
 fi
+if [ -r "$HOME/.factory/droid-env.sh" ]; then
+  . "$HOME/.factory/droid-env.sh"
+fi
 if [[ -n $ZMX_SESSION ]]; then
   export PS1="[$ZMX_SESSION] ${PS1}"
 fi'
