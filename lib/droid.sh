@@ -87,6 +87,10 @@ install_droid_shell_env() {
   log "installing Droid shell env to $env_file"
   mkdir -p "$(dirname "$env_file")"
   {
+    if [ -n "${CLWN_INIT_DROID_API_KEY:-}" ]; then
+      printf 'export FACTORY_API_KEY='
+      printf '%q\n' "$CLWN_INIT_DROID_API_KEY"
+    fi
     printf 'export %s=' "$droid_byok_env_name"
     printf '%q\n' "${CLWN_INIT_DROID_BYOK_API_KEY:-$droid_byok_placeholder}"
   } >"$env_file"
