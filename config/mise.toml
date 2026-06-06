@@ -7,7 +7,7 @@ pnpm = "latest"
 python = "latest"
 uv = "latest"
 go = "latest"
-rust = "stable"
+# rust = "stable"
 "npm:droid" = "latest"
 
 [tools."http:zmx"]
