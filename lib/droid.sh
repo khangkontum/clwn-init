@@ -23,6 +23,17 @@ configure_droid() {
 
   install_droid_settings
   install_droid_shell_env
+
+  # Droid remote access = computer registration + the --remote-access systemd
+  # daemon (and the /etc/factory env file that feeds it). Disabled by default;
+  # enable with CLWN_INIT_DROID_REMOTE_ENABLE=1.
+  case "${CLWN_INIT_DROID_REMOTE_ENABLE:-0}" in
+    0|false|False|no|No)
+      log "skipping Droid remote access setup because CLWN_INIT_DROID_REMOTE_ENABLE=${CLWN_INIT_DROID_REMOTE_ENABLE:-0}"
+      return 0
+      ;;
+  esac
+
   install_droid_env
   register_droid_computer
   install_droid_service
