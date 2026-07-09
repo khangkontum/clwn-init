@@ -16,6 +16,10 @@ Current setup:
 - installs the configured tools, currently Node.js LTS, pnpm, Python, uv, Go, Rust, and zmx
 - runs `mise install -y` so the configured tools are available immediately
 - adds a managed bash startup block for mise activation and a `ZMX_SESSION` prompt prefix
+- marks Claude Code onboarding complete (`hasCompletedOnboarding` in `~/.claude.json`)
+- writes `~/.claude/claude-env.sh` exporting `CLAUDE_CODE_OAUTH_TOKEN` (from
+  `CLWN_INIT_CLAUDE_CODE_OAUTH_TOKEN`), sourced by the managed bash startup block;
+  disable the whole module with `CLWN_INIT_CLAUDE_ENABLE=0`
 
 Layout:
 
@@ -27,6 +31,7 @@ Layout:
 - `lib/git.sh` contains Git identity and hook setup.
 - `lib/git-hooks/commit-msg` removes agent-added `Co-Authored-by` trailers.
 - `lib/mise.sh` contains mise installation, global config sync, and tool install.
+- `lib/claude.sh` contains Claude Code onboarding and OAuth token env setup.
 
 ## Install as the clwn default setup script
 

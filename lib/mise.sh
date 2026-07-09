@@ -29,6 +29,9 @@ fi
 if [ -r "$HOME/.factory/droid-env.sh" ]; then
   . "$HOME/.factory/droid-env.sh"
 fi
+if [ -r "$HOME/.claude/claude-env.sh" ]; then
+  . "$HOME/.claude/claude-env.sh"
+fi
 if [[ -n $ZMX_SESSION ]]; then
   export PS1="[$ZMX_SESSION] ${PS1}"
 fi'

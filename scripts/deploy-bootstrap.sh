@@ -17,6 +17,11 @@ trap cleanup EXIT
   if [ -n "${CLWN_INIT_DROID_COMPUTER_NAME:-}" ]; then
     printf 'export CLWN_INIT_DROID_COMPUTER_NAME=%q\n' "$CLWN_INIT_DROID_COMPUTER_NAME"
   fi
+  if [ -n "${CLWN_INIT_CLAUDE_CODE_OAUTH_TOKEN:-}" ]; then
+    printf 'export CLWN_INIT_CLAUDE_CODE_OAUTH_TOKEN=%q\n' "$CLWN_INIT_CLAUDE_CODE_OAUTH_TOKEN"
+  else
+    echo "warning: CLWN_INIT_CLAUDE_CODE_OAUTH_TOKEN is empty; new VMs will skip the Claude Code shell env" >&2
+  fi
   printf 'export CLWN_INIT_REPO=%q\n' "${CLWN_INIT_REPO:-khangkontum/clwn-init}"
   printf 'export CLWN_INIT_REF=%q\n\n' "${CLWN_INIT_REF:-master}"
   tail -n +2 "$bootstrap_path"

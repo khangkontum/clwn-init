@@ -13,6 +13,8 @@ script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 . "$script_dir/lib/git.sh"
 # shellcheck source=lib/droid.sh
 . "$script_dir/lib/droid.sh"
+# shellcheck source=lib/claude.sh
+. "$script_dir/lib/claude.sh"
 
 main() {
   log "bootstrapping for user=$user_name home=$home_dir"
@@ -20,6 +22,7 @@ main() {
   configure_git
   install_mise
   configure_droid
+  configure_claude
   run_as_user bash -lc 'export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$PATH"; mise --version'
   log "done"
 }
