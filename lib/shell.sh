@@ -22,11 +22,17 @@ ensure_bash_shell() {
 }
 
 install_bash_profile_blocks() {
-  replace_managed_block "$home_dir/.bash_profile" 'if [ -f "$HOME/.bashrc" ]; then
+  replace_managed_block "$home_dir/.bash_profile" 'if [ -r "$HOME/.claude/claude-env.sh" ]; then
+  . "$HOME/.claude/claude-env.sh"
+fi
+if [ -f "$HOME/.bashrc" ]; then
   . "$HOME/.bashrc"
 fi'
 
-  replace_managed_block "$home_dir/.profile" 'if [ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ]; then
+  replace_managed_block "$home_dir/.profile" 'if [ -n "$BASH_VERSION" ] && [ -r "$HOME/.claude/claude-env.sh" ]; then
+  . "$HOME/.claude/claude-env.sh"
+fi
+if [ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ]; then
   . "$HOME/.bashrc"
 fi'
 
